@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="logo-container">
+  <div class="fish-container">
+    <h2>FISH TANK</h2>
+  </div>
+  <img 
+    src="{% static 'images/header-logo.svg' %}" 
+    alt="Text reads: Fish Tank"
+  />
+</section>
+
+{% endblock %}
