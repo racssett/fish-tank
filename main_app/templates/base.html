@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,10 @@
   <link
     rel="shortcut icon"
     type="image/png"
-    href=""
+    href="{% static 'images/splash.svg' %}"
   >
   <title>Fish Tank</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   {% block head %}
   {% endblock %}
 </head>
@@ -17,11 +20,15 @@
   <header>
     <div class="header-logo-container">
       <a href="/">
-        <h1>HOME</h1>
+        <img 
+          src="{% static 'images/header-logo.svg' %}" 
+          alt="The Fish Tank Logo"
+        >
       </a>
     </div>
     <nav>
       <ul>
+        <li><a href="/fish">Fish Tank</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     </nav>
