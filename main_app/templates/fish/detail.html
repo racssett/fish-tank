@@ -22,6 +22,10 @@
     <h1>{{ fish.name }}</h1>
     <h2>A {{ fish.age }} year old {{ fish.type }}</h2>
     <p>{{ fish.description }}</p>
+    <div class="fish-actions">
+      <a href="{% url 'fish_update' fish.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'fish_delete' fish.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 

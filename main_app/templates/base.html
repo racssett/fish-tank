@@ -28,8 +28,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/fish">Fish Tank</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'fish_index' %}">Fish Tank</a></li>
+        <li><a href="{% url 'fish_create' %}">Add a Fish</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </nav>
   </header>
