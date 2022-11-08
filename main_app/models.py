@@ -19,7 +19,8 @@ class Fish(models.Model):
   def get_absolute_url(self):
     return reverse("fish_detail", kwargs={"fish_id": self.id})
 
-
+  def fed_for_today(self):
+    return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
   
 class Feeding(models.Model):
   date = models.DateField('Feeding date')
@@ -31,3 +32,14 @@ class Feeding(models.Model):
 
   class Meta:
     ordering = ['-date']
+
+class Enrichment(models.Model):
+  name = models.CharField(max_length=50)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+      return reverse("enrichments_detail", kwargs={"pk": self.id})
+  

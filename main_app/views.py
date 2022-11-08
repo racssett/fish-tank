@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Fish
+from .models import Fish, Enrichment
 from .forms import FeedingForm
 
 from django.http import HttpResponse
@@ -41,3 +42,21 @@ def add_feeding(request, fish_id):
     new_feeding.fish_id = fish_id
     new_feeding.save()
   return redirect('fish_detail', fish_id=fish_id)
+
+class EnrichmentCreate(CreateView):
+  model = Enrichment
+  fields = '__all__'
+
+class EnrichmentList(ListView):
+  model = Enrichment
+
+class EnrichmentDetail(DetailView):
+  model = Enrichment
+
+class EnrichmentUpdate(UpdateView):
+  model = Enrichment
+  fields = ['name', 'color']
+
+class EnrichmentDelete(DeleteView):
+  model = Enrichment
+  success_url = '/enrichments/'
