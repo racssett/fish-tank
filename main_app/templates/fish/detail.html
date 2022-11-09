@@ -68,7 +68,6 @@
       <button type="submit" class="btn submit">Add Feeding</button>
     </form>
     <h3>Past Feedings</h3>
-    <h3>Past Feedings</h3>
     {% if fish.feeding_set.all.count %}
       <table>
         <thead>
@@ -88,6 +87,53 @@
         <p>{{fish.name}} is starving. </p>
       </div>
     {% endif %}
+  </section>
+  <section class="enrichments">
+    <div class="subsection-title">
+      <h2>Tank Enrichments</h2>
+    </div>
+    <h3>{{ fish.name }}'s Tank Enrichments</h3>
+    <div class="subsection-content">
+      {% if fish.enrichments.count %}
+        {% for enrichment in fish.enrichments.all %}
+          <div class="enrichment-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ enrichment.color }}"
+            ></div>
+            <a href="{% url 'enrichments_detail' enrichment.id %}">
+              <p>A {{ enrichment.color }} {{ enrichment.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-enrichments">{{fish.name}} doesn't have any tank enrichments</p>
+      {% endif %}
+    </div>
+    <h3>Available Tank Enrichments</h3>
+    <div class="subsection-content">
+      {% if enrichments.count %}
+        {% for enrichment in enrichments.all %}
+          <div class="enrichment-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ enrichment.color }}"
+            ></div>
+            <a href="{% url 'enrichments_detail' enrichment.id %}">
+              <p>A {{ enrichment.color }} {{ enrichment.name }}</p>
+            </a>
+            <form action="{% url 'assoc_enrichment' enrichment.id enrichment.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Give Tank Enrichment</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-enrichments">
+          {{fish.name}} already has all the available enrichments 🥳
+        </p>
+      {% endif %}
+    </div>
   </section>
 </div>
 

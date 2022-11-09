@@ -28,11 +28,18 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'fish_index' %}">Fish Tank</a></li>
-        <li><a href="{% url 'enrichments_index' %}">All Enrichments</a></li>
-        <li><a href="{% url 'fish_create' %}">Add a Fish</a></li>
-        <li><a href="{% url 'enrichments_create' %}">Add a Tank Enrichment</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'fish_index' %}">Fish Tank</a></li>
+          <li><a href="{% url 'enrichments_index' %}">All Enrichments</a></li>
+          <li><a href="{% url 'fish_create' %}">Add a Fish</a></li>
+          <li><a href="{% url 'enrichments_create' %}">Add a Tank Enrichment</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Log In</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

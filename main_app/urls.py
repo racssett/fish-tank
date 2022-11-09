@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-  path('', views.home, name='home'),
+  path('', views.Home.as_view(), name='home'),
   path('about/', views.about, name='about'),
   path('fish/', views.fish_index, name='fish_index'),
   path('fish/<int:fish_id>/', views.fish_detail, name='fish_detail'),
@@ -10,9 +10,11 @@ urlpatterns = [
   path('fish/<int:pk>/update/', views.FishUpdate.as_view(), name='fish_update'),
   path('fish/<int:pk>/delete/', views.FishDelete.as_view(), name='fish_delete'),
   path('fish/<int:fish_id>/add_feeding/', views.add_feeding, name='add_feeding'),
+  path('fish/<int:fish_id>/assoc_enrichment/<int:enrichment_id>/', views.assoc_enrichment, name='assoc_enrichment'),
   path('enrichments/create/', views.EnrichmentCreate.as_view(), name='enrichments_create'),
   path('enrichments/<int:pk>/', views.EnrichmentDetail.as_view(), name='enrichments_detail'),
   path('enrichments/', views.EnrichmentList.as_view(), name='enrichments_index'),
   path('enrichments/<int:pk>/update/', views.EnrichmentUpdate.as_view(), name='enrichments_update'),
-  path('enrichments/<int:pk>/delete/', views.EnrichmentDelete.as_view(), name='enrichments_delete')
+  path('enrichments/<int:pk>/delete/', views.EnrichmentDelete.as_view(), name='enrichments_delete'),
+  path('accounts/signup/', views.signup, name='signup'),
 ]

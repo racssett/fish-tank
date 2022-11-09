@@ -45,7 +45,7 @@
   margin: 0 8px;
 }
 
-.toy-container {
+.enrichment-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -60,19 +60,19 @@
 
 .unfed,
 .fed,
-.no-toys,
-.all-toys {
+.no-enrichments,
+.all-enrichments {
   margin: 0;
   font-weight: bold;
 }
 
 .unfed,
-.no-toys {
+.no-enrichments {
   color: var(--danger);
 }
 
 .fed,
-.all-toys {
+.all-enrichments {
   color: var(--submit);
 }
 
@@ -166,16 +166,16 @@
   background-color: #f3f3fd;
 }
 
-.toy-container p {
+.enrichment-container p {
   margin: 12px 0;
 }
 
-.toy-container a {
+.enrichment-container a {
   text-decoration: none;
   color: #111;
 }
 
-.toy-container .btn {
+.enrichment-container .btn {
   padding: 3px 10px;
   margin-left: 10px;
 }
